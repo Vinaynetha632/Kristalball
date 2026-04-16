@@ -17,7 +17,7 @@ const Purchases = ({ role }) => {
     setError('');
     
     try {
-      await axios.post('http://localhost:5000/api/purchases', { assetName, category, base }, { headers });
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/purchases`, { assetName, category, base }, { headers });
       setMessage('Asset purchased and added successfully!');
       setAssetName('');
       setCategory('');

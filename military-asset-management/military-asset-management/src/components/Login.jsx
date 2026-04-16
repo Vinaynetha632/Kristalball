@@ -15,13 +15,13 @@ const Login = ({ onLogin }) => {
     
     try {
       if (isRegistering) {
-        await axios.post('http://localhost:5000/api/register', { username, password, role });
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register`, { username, password, role });
         setIsRegistering(false);
         setUsername('');
         setPassword('');
         setError('Registration successful. Please login.');
       } else {
-        const response = await axios.post('http://localhost:5000/api/login', { username, password });
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, { username, password });
         onLogin(response.data.token, response.data.role);
       }
     } catch (err) {
